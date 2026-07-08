@@ -6,6 +6,7 @@ function App() {
 
     // create ref
 const inputRef=useRef()
+
     // create focusInput function
 function focusInput(){
   inputRef.current.focus()
@@ -14,7 +15,6 @@ function focusInput(){
         <div>
 
             <input ref={inputRef}/>
-
 
             <button>
                 Click Me
