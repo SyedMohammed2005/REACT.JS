@@ -9,10 +9,11 @@ function App() {
 
   function increase() {
     // Save the current count before updating it
+     setCount(count + 1);
     previousRef.current = count;
 
     // Update the current count
-    setCount(count + 1);
+   
   }
 
   return (
