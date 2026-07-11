@@ -4,6 +4,7 @@ import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Navbar from "./Components/Navbar.jsx";
 
+
 function App(){
   return(
     <>
