@@ -1,6 +1,6 @@
 import StudentCard from "./StudentCard";
 
-function StudentList({ students }) {
+function StudentList({ students, setEditingStudent }) {
 
   return (
 
@@ -11,11 +11,9 @@ function StudentList({ students }) {
         students.map((student) => (
 
           <StudentCard
-
             key={student.id}
-
             student={student}
-
+            setEditingStudent={setEditingStudent}
           />
 
         ))

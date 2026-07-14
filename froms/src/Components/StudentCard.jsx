@@ -1,4 +1,7 @@
-function StudentCard({ student }) {
+function StudentCard({
+  student,
+  setEditingStudent,
+}) {
 
   return (
 
@@ -8,9 +11,11 @@ function StudentCard({ student }) {
 
       <p>{student.email}</p>
 
-      <button>Edit</button>
-
-      <button>Delete</button>
+      <button
+        onClick={() => setEditingStudent(student)}
+      >
+        Edit
+      </button>
 
     </div>
 

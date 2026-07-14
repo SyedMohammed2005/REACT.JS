@@ -1,28 +1,48 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-function StudentForm({ addStudent }) {
+function StudentForm({
+  addStudent,
+  editingStudent,
+  updateStudent,
+}) {
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+
+  useEffect(() => {
+
+    if (editingStudent) {
+
+      setName(editingStudent.name);
+      setEmail(editingStudent.email);
+
+    }
+
+  }, [editingStudent]);
 
   function handleSubmit(e) {
 
     e.preventDefault();
 
-    const student = {
+    if (editingStudent) {
 
-      id: Date.now(),
+      updateStudent({
+        id: editingStudent.id,
+        name,
+        email,
+      });
 
-      name,
+    } else {
 
-      email
+      addStudent({
+        id: Date.now(),
+        name,
+        email,
+      });
 
-    };
-
-    addStudent(student);
+    }
 
     setName("");
-
     setEmail("");
 
   }
@@ -32,39 +52,30 @@ function StudentForm({ addStudent }) {
     <form onSubmit={handleSubmit}>
 
       <input
-
-        type="text"
-
-        placeholder="Enter Name"
-
         value={name}
-
         onChange={(e) => setName(e.target.value)}
-
+        placeholder="Name"
       />
 
       <br />
 
       <input
-
-        type="email"
-
-        placeholder="Enter Email"
-
         value={email}
-
         onChange={(e) => setEmail(e.target.value)}
-
+        placeholder="Email"
       />
 
       <br />
 
-      <button>Add Student</button>
+      <button>
+
+        {editingStudent ? "Update Student" : "Add Student"}
+
+      </button>
 
     </form>
 
   );
-
 }
 
 export default StudentForm;
