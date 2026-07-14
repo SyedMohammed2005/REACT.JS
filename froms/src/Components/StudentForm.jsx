@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 
+
 function StudentForm({
   addStudent,
   editingStudent,
@@ -20,7 +21,7 @@ function StudentForm({
 
   }, [editingStudent]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
 
     e.preventDefault();
 

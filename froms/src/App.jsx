@@ -1,15 +1,33 @@
 import { useState } from "react";
 import StudentForm from "./components/StudentForm";
 import StudentList from "./components/StudentList";
-
+import api from "./services/api";
 function App() {
 
   const [students, setStudents] = useState([]);
   const [editingStudent, setEditingStudent] = useState(null);
 
-  function addStudent(student) {
-    setStudents([...students, student]);
-  }
+ async function addStudent(student){
+
+   try{
+
+      const response = await api.post(
+         "/students",
+         student
+      );
+
+      setStudents([
+         ...students,
+         response.data
+      ]);
+
+   }catch(error){
+
+      console.log(error);
+
+   }
+
+}
 
   function updateStudent(updatedStudent) {
 
